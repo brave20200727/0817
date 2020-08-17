@@ -1,6 +1,6 @@
 <?php
 	header("content-type: text/html; charset=utf-8");
-	$num = 3;
+	$num = 4;
 	switch ($num){
 		case 0:
 			echo "零";

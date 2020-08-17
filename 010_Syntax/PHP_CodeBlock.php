@@ -6,15 +6,15 @@
 </head>
 <body>
 
-<?php 
+<?php
   // It's PHP code block.
-  
+
   $x = 3;
-  
+
   echo $x;
-  
+
   // 區分大寫小寫
-  // echo $X;
+  echo $X;
 
 ?>
 
