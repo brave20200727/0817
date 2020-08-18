@@ -1,6 +1,8 @@
 <?php
 function cmp($a, $b)
 {
+    // return $b - $a;
+
     if ($a == $b) {
         return 0;
     }
