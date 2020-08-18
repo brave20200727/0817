@@ -1,6 +1,7 @@
 <?php
 if (isset ( $_POST ["btnOK"] )) {
-	processFile ( $_FILES ["file1"] );
+	var_dump($_FILES);
+	// processFile ( $_FILES ["file1"] );
 }
 function processFile($objFile) {
 	if ($objFile ["error"] != 0) {
@@ -11,7 +12,7 @@ function processFile($objFile) {
 	
 	$test = move_uploaded_file ( $objFile ["tmp_name"], "./" . $objFile ["name"] );
 	if (! $test) {
-		die ( "move_uploaded_file() faile" );
+		die ( "move_uploaded_file() failed" );
 	}
 	
 	echo "File uploaded<br />";

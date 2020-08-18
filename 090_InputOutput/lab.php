@@ -1,5 +1,9 @@
+<?php
+$fileName = "data3.txt";
+$fileHandle = fopen($fileName, "wb");
+$content = <<<fileContent
 PHP基本語法重點整理、
-自訂函式寫作<i>注意事項</i>、
+自訂函式寫作注意事項、
 陣列與相關函式、
 字串與相關函式、
 物件導向程式設計、
@@ -12,3 +16,7 @@ PHP資料庫程式設計、
 Web Services、
 PHP與jQuery、
 jQuery Mobile整合運用
+fileContent;
+fwrite($fileHandle, $content);
+fclose($fileHandle);
+?>

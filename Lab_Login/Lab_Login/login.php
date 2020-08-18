@@ -1,3 +1,24 @@
+<?php
+  // if(isset($_POST["btnOK"])) {
+  //   $userName = $_POST["txtUserName"];
+  //   if($userName != "") {
+  //     setcookie("uid", $userName);      
+  //   };
+  // };
+?>
+<?php
+  session_start();
+  if(isset($_POST["btnOK"])) {
+    $userName = $_POST["txtUserName"];
+    $userPassword = $_POST["txtPassword"];
+    if($userName != "" && $userPassword != "") {
+      setcookie("userName", $userName); 
+      setcookie("userPassword", $userName); 
+      // $_SESSION["userName"] = $userName;
+      // $_SESSION["userPassword"] = $userPassword;
+    }
+  }
+?>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
