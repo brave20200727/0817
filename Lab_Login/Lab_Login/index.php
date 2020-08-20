@@ -1,3 +1,16 @@
+<?php
+session_start();
+// var_dump($_SESSION);
+if(isset($_SESSION["userName"])) {
+  $userName = $_SESSION["userName"];
+  $userPassword = $_SESSION["userPassword"];
+}
+else {
+  $userName = "";
+  $userPassword = "";
+}
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,10 +24,19 @@
     <td align="center" bgcolor="#CCCCCC"><font color="#FFFFFF">會員系統 - 首頁</font></td>
   </tr>
   <tr>
-    <td align="center" valign="baseline"><a href="login.php">登入</a> | <a href="secret.php">會員專用頁</a></td>
+    <td align="center" valign="baseline">
+    <?php if($userName == ""){ ?>
+      <a href="login.php">登入</a>
+    <?php } else { ?>
+      <a href="login.php?logout=1">登出</a>
+    <?php } ?>
+    &nbsp;|&nbsp;<a <?php echo ($userName != "") ? "href=\"secret.php\"" : "href=\"login.php?secret=1\""?>>會員專用頁</a>
+    </td>
   </tr>
   <tr>
-    <td align="center" bgcolor="#CCCCCC">&nbsp;</td>
+    <td align="center" bgcolor="#CCCCCC">
+      <?php if($userName != "") { echo "歡迎光臨！" . $userName; } else { echo "歡迎光臨！ guest"; }?>
+    </td>
   </tr>
 </table>
 

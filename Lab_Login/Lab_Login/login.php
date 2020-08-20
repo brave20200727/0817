@@ -1,22 +1,33 @@
 <?php
-  // if(isset($_POST["btnOK"])) {
-  //   $userName = $_POST["txtUserName"];
-  //   if($userName != "") {
-  //     setcookie("uid", $userName);      
-  //   };
-  // };
-?>
-<?php
   session_start();
+  // var_dump($_GET);
+  if(isset($_GET["logout"])) {
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+    exit();
+  }
+
   if(isset($_POST["btnOK"])) {
     $userName = $_POST["txtUserName"];
     $userPassword = $_POST["txtPassword"];
     if($userName != "" && $userPassword != "") {
-      setcookie("userName", $userName); 
-      setcookie("userPassword", $userName); 
-      // $_SESSION["userName"] = $userName;
-      // $_SESSION["userPassword"] = $userPassword;
+      $_SESSION["userName"] = $userName;
+      $_SESSION["userPassword"] = $userPassword;
+      // var_dump($_GET);
+      if(isset($_GET["secret"])) {
+        header("Location: secret.php");
+      } else {
+        header("Location: index.php");
+      }
     }
+    exit();
+  }
+
+  if(isset($_POST["btnHome"])) {
+    // var_dump($_POST);
+    header("Location: index.php");
+    exit();
   }
 ?>
 <html>
@@ -25,7 +36,7 @@
 	<title>Lab - Login</title>
 </head>
 <body>
-<form id="form1" name="form1" method="post" action="login.php">
+<form id="form1" name="form1" method="post" action="">
   <table width="300" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="#F2F2F2">
     <tr>
       <td colspan="2" align="center" bgcolor="#CCCCCC"><font color="#FFFFFF">會員系統 - 登入</font></td>
